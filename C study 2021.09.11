@@ -1,10 +1,8 @@
-#include <stdio.h>
-{
 int main()
 {
 	double d = 3.14;
 	double* pd = &d;
-	printf("%d\n", sizeof(pd));
+	printf("%d\n", sizeof(pd));   //32位——4字节，64位——8字节
 	*pd = 6.18;
 	printf("%lf\n",d);
 	printf("%lf\n", *pd);
