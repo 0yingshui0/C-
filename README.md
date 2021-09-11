@@ -1,4 +1,4 @@
-# C-
+# C语言学习
 C语言学习时留下的代码
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <stdio.h>
