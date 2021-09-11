@@ -1,5 +1,42 @@
 #include <stdio.h>
 {
+int main()
+{
+	double d = 3.14;
+	double* pd = &d;
+	printf("%d\n", sizeof(pd));
+	*pd = 6.18;
+	printf("%lf\n",d);
+	printf("%lf\n", *pd);
 
+
+	int a = 10;               //申请了4个字节的空间
+	printf("%p\n", &a);
+	int *p = &a;              //p——是一个变量——指针变量
+	*p = 20;                 //  *——解引用操作符/间接引用操作符
+	printf("%p\n", &a);
+
+	return 0;
+}
+
+////static的用法
+//int sum(int a)
+//{
+//	int c = 0;
+//	static int b = 3;                       //syatic ——延长局部变量生命周期
+//	c += 1;
+//	b += 2;         
+//	return(a + b + c);
+//}
+//int main()
+//{
+//	int i = 0;
+//	int a = 2;
+//	for (i = 0; i < 5; i++)
+//	{
+//		printf("%d\n", sum(a));
+//	}
+//	return 0;
+//}
    return 0;
 }
