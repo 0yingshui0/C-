@@ -1,4 +1,35 @@
 #include <stdio.h>
+
+////  1-100的奇数
+//int main()
+//{
+//	int i = 1;
+//	while (i <= 100)
+//	{
+//			printf(" %d ", i);
+//			i+=2;
+//
+//	}
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	int i = 0;
+//	while (i < 100)
+//	{
+//		static  int a = 0;
+//		a += 1;
+//		int b = a % 2;
+//		if (1 == b)
+//			printf(" %d ", a);
+//		i++;
+//	}
+//
+//	return 0;
+//}
+
 int main()
 {
 	int age = 100;
