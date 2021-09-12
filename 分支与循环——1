@@ -1,0 +1,28 @@
+#include <stdio.h>
+int main()
+{
+	int age = 100;
+	if (age < 18)                   //如果条件成立，要执行多条语句，应该使用代码块
+	{
+		printf("未成年\n");
+		printf("不能谈恋爱\n");
+	}
+	else
+	{
+		if (age >= 18 && age < 28)    //  && —— 逻辑与
+			printf("青年\n");
+		else if (age >= 28 && age < 50)
+			printf("壮年\n");
+		else if (age >= 50 && age < 90)
+			printf("老年\n");
+		else
+			printf("老不死\n");
+	}
+	//int age = 10;
+	//if (age < 18)
+	//	printf("未成年\n");
+	//else
+	//	printf("成年\n");
+
+	return 0;
+}
