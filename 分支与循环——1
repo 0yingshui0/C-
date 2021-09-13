@@ -1,6 +1,37 @@
 #include <stdio.h>
 
-//   switch  语句
+////  getchar  与  putchr
+//int main() 
+//{
+//	int ch = 0;    //应只输入一个字符
+//	while ((ch = getchar()) != EOF)
+//	{
+//		putchar(ch);
+//	}
+//
+//
+//	//putchar(ch);
+//	//printf("%c\n", ch);
+//	
+//	return 0;
+//}
+
+
+
+//int main()
+//{
+//	int i = 1;
+//	while (i <= 10)
+//	{
+//		if (i == 5)
+//			continue;    //     中止本次循环continue后的代码，直接跳转到while语句的判断部分。进行下一次循环的入口判断
+//	//		break;       //     直接跳出所有循环
+//		printf("%d ", i);
+//		i++;
+//	}
+//	return 0;
+//}
+
 
 //   switch  语句
 
