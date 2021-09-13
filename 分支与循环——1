@@ -1,5 +1,77 @@
 #include <stdio.h>
 
+////  getchar  与  putchar   and  while
+//int main()
+//{
+//	int ch = 0;
+//	while ((ch = getchar()) != EOF)      //ctrl + z  跳出循环
+//	{
+//		if (ch<'0' || ch>'9')
+//			continue;
+//		putchar(ch);
+//	}
+//
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	int ch = 0;
+//	int password[20] = { 0 };
+//	printf("请输入密码：>");                //%s——数组
+//	scanf("%s", &password);                //输入密码，存储在password数组中
+//	//缓冲区中还剩一个'\n'
+//	//读取一下'\n'
+//	while ((ch = getchar()) != '\n')           //  不等于'\n'
+//	{
+//		;                                       //空语句
+//	}
+//	printf("请确认（Y or N）：>");
+//	int ret = getchar();
+//	if (ret='Y')
+//	{
+//		printf("确认成功");
+//	}
+//	else
+//	{
+//		printf("确认失败");
+//	}
+//
+//	return 0;
+//}
+
+
+//int main() 
+//{
+//	int ch = 0;    //应只输入一个字符
+//	while ((ch = getchar()) != EOF)           //EOF —— end of file 文件结束标志
+//	{
+//		putchar(ch);
+//	}
+//
+//
+//	//putchar(ch);
+//	//printf("%c\n", ch);
+//	
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	int i = 1;
+//	while (i <= 10)
+//	{
+//		if (i == 5)
+//			continue;    //     中止本次循环continue后的代码，直接跳转到while语句的判断部分。进行下一次循环的入口判断
+//	//		break;
+//		printf("%d ", i);
+//		i++;
+//	}
+//	return 0;
+//}
+
 ////  getchar  与  putchr
 //int main() 
 //{
