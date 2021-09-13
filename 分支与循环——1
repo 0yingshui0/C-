@@ -1,5 +1,25 @@
 #include <stdio.h>
 
+//  for  循环语句
+
+int main()
+{
+	int i = 0;
+	//  初始化   判断   调整
+	for (i = 1; i <= 10; i++)
+	{
+		if (i == 5)
+			continue;
+			//break;
+
+		printf("\t%d\t", i);
+		
+	}
+
+	return 0;
+}
+
+
 ////  getchar  与  putchar   and  while
 //int main()
 //{
