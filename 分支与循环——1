@@ -4,6 +4,50 @@
 #include <Windows.h>
 #include <stdlib.h>
 
+////  给定两个数，求这两个数的最大公约数
+
+//优化
+//int main()
+//{
+//	int a = 0;
+//	int b = 0;
+//	int r = 0;
+//	scanf("%d%d", &a, &b);
+//	while (a%b)              //非0为真，0为假
+//	{
+//		r = a % b;
+//		a = b;
+//		b = r;
+//	}
+//	printf("最大公约数：%d", b);
+//
+//	return 0;
+//}
+
+//
+//int main()
+//{
+//	int a, b;
+//	int ret = 0;
+//	scanf("%d%d", &a, &b);
+//	if (a < b)
+//	{
+//	    ret = a;
+//		a = b;
+//		b = ret;
+//	}
+//	while (ret != 0)
+//	{
+//	    ret = a % b;
+//		a = b;
+//		b = ret;			
+//	}
+//	printf("最大公约数是：%d", a);
+//
+//	return 0;
+//}
+
+
 
 ////  打印1~100中所有3的倍数的数字
 //
