@@ -4,6 +4,29 @@
 #include <Windows.h>
 #include <stdlib.h>
 
+////   打印1000到2000年之间的闰年
+//
+////小知识
+////能被4整除并且不能被100整除是闰年
+////能被400整除是闰年
+//int main()
+//{
+//	int year = 1000;
+//	for (year = 1000;year<=2000;year++)
+//	{
+//		if (year % 4 == 0 && year % 100 != 0)
+//		{
+//			printf(" %d ", year);
+//		}
+//		else if (year % 400 == 0)
+//		{
+//			printf(" %d ", year);
+//		}
+//	}
+//	return 0;
+//}
+
+
 ////  给定两个数，求这两个数的最大公约数
 
 //优化
