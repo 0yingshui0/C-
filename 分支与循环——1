@@ -12,19 +12,25 @@
 //int main()
 //{
 //	int year = 1000;
+//	int count = 0;
 //	for (year = 1000;year<=2000;year++)
 //	{
 //		if (year % 4 == 0 && year % 100 != 0)
 //		{
 //			printf(" %d ", year);
+//			count++;                      // 统计有多少闰年
+//
 //		}
 //		else if (year % 400 == 0)
 //		{
 //			printf(" %d ", year);
+//			count++;
 //		}
 //	}
+//	printf("\n\n%d\n", count);
 //	return 0;
 //}
+
 
 
 ////  给定两个数，求这两个数的最大公约数
