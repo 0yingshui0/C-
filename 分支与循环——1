@@ -4,6 +4,93 @@
 #include <Windows.h>
 #include <stdlib.h>
 
+////交换两个数字的值
+////第二种尝试
+//
+//void Swap(int* pa, int* pb)//获取a，b的值
+//{
+//	int tmp = 0;
+//	tmp = *pa;
+//	*pa = *pb;              //交换a，b的值
+//	*pb = tmp;              
+//}
+//
+//int main()
+//{
+//	int a = 10;
+//	int b = 20;
+//	printf("a=%d,b=%d\n", a, b);
+//	Swap(&a, &b);
+//	printf("a=%d,b=%d\n", a, b);
+//	return 0;
+//}
+
+
+
+////  第一种尝试    无效
+//void Swap(int x, int y)    //  void  无返回值
+//{
+//	int ret = 0;
+//	ret = x;
+//	x = y;
+//	y = ret;
+//}                        //  x ,y 的地址与 a， b 的地址不同，故无法交换 
+//int main()
+//{
+//	int a = 10;
+//	int b = 20;
+//	printf("a=%d , b=%d\n", a, b);
+//	Swap(a, b);
+//	printf("a=%d, b=%d\n", a, b);
+//	return 0;
+//}
+
+
+
+////   创建一个函数，选择一个较大的数
+////定义函数
+//int get_max(int x, int y)
+//{
+//	if (x > y)
+//		return x;
+//	else
+//		return y;
+//}
+//int main()
+//{
+//	int a = 10;
+//	int b = 20;
+//	int max = get_max(a, b);  //调用函数
+//	printf(" max = %d\n", max);
+//		return 0;
+//}
+
+
+/*
+  ret_type fun_name(para1,*)
+  {
+      stament;//语句项
+   }
+   ret_type    返回类型
+   fun_name    函数名
+   para1       函数参数
+*/
+
+
+
+////memset               学会阅读文档 
+////memory  - 内存 set - 设置  
+//int main()
+//{
+//	char arr[] = "hello world";
+//	memset(arr, '*', 5);
+//	printf("%s\n", arr);
+//	//输出  ***** world
+//	return 0;
+//}
+
+
+
 ////strcpy - 使用方法
 
 //int main()
