@@ -1,0 +1,70 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <string.h>                  //使用strlen函数需引用该头文件
+#include <Windows.h>
+#include <stdlib.h>
+#include <math.h>
+#include <time.h>
+
+
+////函数声明          //函数要先声明后定义，
+//#include "Add.h"  //声明放在头文件(.h文件)中，定义放在.cpp文件中，引用时用双引号（自己写的头文件）
+//int main()
+//{
+//	int a = 44;
+//	int b = 54;
+//	//函数调用
+//	int ret = Add(a, b);
+//	printf("sum= %d\n", ret);
+//	return 0;
+//}
+
+
+
+//链式访问
+//把一个函数的返回值作为另外一个函数的参数
+
+//int main()
+//{
+//	printf("%d", printf("%d", printf("%d", 43)));
+//	//printf函数  其返回值是打印字符的个数
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	int len = 0;
+//	//1
+//	len = strlen("abc");
+//	printf("len=%d\n", len);
+//	//2  链式访问
+//	printf("len=%d\n", strlen("abc"));
+//	return 0;
+//}
+
+
+
+//函数的嵌套调用
+//函数与函数之间可以有机的组合
+//函数中可以调用另一个函数来实现功能
+
+
+//每调用一次函数，num加一次
+
+//void Add(int* p)
+//{
+//	(*p)++;   //++的优先级较高，故直接作用于p，所以要用()括住
+//}
+//
+//int main()
+//{
+//	int num = 0;
+//	Add(&num);
+//	printf("num = %d\n", num);
+//	Add(&num);
+//	printf("num = %d\n", num);
+//	Add(&num);
+//	printf("num = %d\n", num);
+//	return 0;
+//}
