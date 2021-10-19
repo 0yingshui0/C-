@@ -19,4 +19,268 @@ char charge(char board[row][lin]);//胜利条件
 
 .c++文件
 
-game.c++
+game.c
+
+
+#define _CRT_SECURE_NO_WARNINGS 1
+#include "game.h"
+
+//初始化棋盘
+void init_board(char board[row][lin])
+{
+	int i = 0;
+	int j = 0;
+	for (i = 0; i < row; i++)
+	{
+		for (j = 0; j < lin; j++)
+		{
+			board[i][j] = ' ';      //初始化棋盘令其为空棋盘
+		}
+	}
+}
+
+
+//打印棋盘
+void display_board(char board[row][lin])
+{
+	int i = 0;
+	int j = 0;
+	for (i = 0; i <= row; i++)
+	{
+		for (j = 0; j <= lin ; j++)         //打印分割线
+		{
+			printf("+");
+			if (j < lin )
+				printf("---");
+		}
+		printf("\n");
+		if (i <= row - 1)                 //打印数据
+		{
+			for (j = 0; j < lin; j++)
+			{
+				printf("| %c ",board[i][j]);
+				if (j == lin - 1)
+					printf("|");
+			}
+			printf("\n");
+		}
+	}
+}
+
+
+//玩家下棋
+//void player_input(char board[row][lin])
+//{
+//	int input[2];
+//	int output[2];
+//	int choose = 0;
+//	int i = 0;
+//	int j = 0;
+//	int count = 0;
+//	printf("\n坐标格式为1 1\n中间为一个空格\n请输入:>");
+//repet:
+//	scanf("%d %d", &input[0], &input[1]);
+//	if (input[0] < -row && input[1] < -lin)               //各种输入情况
+//		choose = 1;
+//	else if ((-row <= input[0] && input[0] <= -1) && (-lin <= input[1] && input[1] <= -1))
+//		choose = 2;
+//	else if ((1 <= input[0] && input[0] <= row) && (1 <= input[1] && input[1] <= lin))
+//		choose = 3;
+//	else if (input[0] > row && input[1] > lin)
+//		choose = 4;
+//	else
+//		choose = 5;
+//	switch (choose)
+//	{
+//	case 1:
+//		i = input[0] * (-1);
+//		j = input[1] * (-1);
+//		output[0] = (i - 1) % row;
+//		output[1] = (j - 1) % lin;
+//		if (board[output[0]][output[1]] != ' ')    //判断是否为空位
+//		{
+//			printf("请不要下在已有棋子的地方\n请重新输入:>");
+//			goto repet;
+//		}
+//		else
+//			board[output[0]][output[1]] = '*';
+//		break;
+//	case 2:
+//		i = input[0] * (-1);
+//		j = input[1] * (-1);
+//		output[0] = i - 1;
+//		output[1] = j - 1;
+//		if (board[output[0]][output[1]] != ' ')
+//		{
+//			printf("请不要下在已有棋子的地方\n请重新输入:>");
+//			goto repet;
+//		}
+//		else
+//			board[output[0]][output[1]] = '*';
+//		break;
+//	case 3:
+//		i = input[0];
+//		j = input[1];
+//		output[0] = i - 1;
+//		output[1] = j - 1;
+//		if (board[output[0]][output[1]] != ' ')
+//		{
+//			printf("请不要下在已有棋子的地方\n请重新输入:>");
+//			goto repet;
+//		}
+//		else
+//			board[output[0]][output[1]] = '*';
+//		break;
+//	case 4:
+//		i = input[0];
+//		j = input[1];
+//		output[0] = (i - 1) % row;
+//		output[1] = (j - 1) % lin;
+//		if (board[output[0]][output[1]] != ' ')
+//		{
+//			printf("请不要下在已有棋子的地方\n请重新输入:>");
+//			goto repet;
+//		}
+//		else
+//			board[output[0]][output[1]] = '*';
+//		break;
+//	case 5:
+//		printf("输入错误\n请重新输入:>");
+//		goto repet;
+//		break;
+//	}
+//	display_board(board);
+//}
+
+//玩家下棋2
+void player_input(char board[row][lin])
+{
+	int input[2];
+	int output[2];
+	printf("\n坐标格式为1 1\n中间为一个空格\n请输入:>");
+	repet:
+	scanf("%d %d", &input[0], &input[1]);
+	//第一位坐标
+	if (input[0] < -row)                       //小于-row
+	{
+		int i = 0;
+		i = input[0] * (-1);
+		output[0] = (i - 1) % row;
+	}
+	else if (-row <= input[0] && input[0] <= -1)   //-row与-1之间
+	{
+		int i = 0;
+		i = input[0] * (-1);
+		output[0] = i - 1;
+	}
+	else if (input[0] == 0)                   //0
+		output[0] = 0;
+	else if (1 <= input[0] && input[0] <= row) //1到row之间
+		output[0] = input[0] - 1;
+	else 
+		output[0] = (input[0] - 1) % 3;         //大于row
+	//第二位坐标
+	if (input[1] < -row)                       //小于-row
+	{
+		int i = 0;
+		i = input[1] * (-1);
+		output[1] = (i - 1) % row;
+	}
+	else if (-row <= input[1] && input[1] <= -1)   //-row与-1之间
+	{
+		int i = 0;
+		i = input[1] * (-1);
+		output[1] = i - 1;
+	}
+	else if (input[1] == 0)                   //0
+		output[1] = 0;
+	else if (1 <= input[1] && input[1] <= row) //1到row之间
+		output[1] = input[1] - 1;
+	else
+		output[1] = (input[1] - 1) % 3;         //大于row
+	if (board[output[0]][output[1]] != ' ')
+	{
+		printf("\n请不要下在已有棋子的地方\n请重新输入:>");
+		goto repet;
+	}
+	board[output[0]][output[1]] = '*';
+	system("cls");//清空屏幕
+	printf("\n玩家:\n");
+	display_board(board);
+} 
+
+//电脑下棋
+void rot_input(char board[row][lin])
+{
+	int output[2];
+	printf("\n电脑：\n");
+repet:
+	{
+		output[0] = rand() % row;
+		output[1] = rand() % lin;
+	}
+	if (board[output[0]][output[1]] != ' ')//防止替换玩家棋子
+		goto repet;
+	else
+		board[output[0]][output[1]] = 'O';
+	display_board(board);
+}
+
+//棋盘是否下满
+int board_full(char board[row][lin])
+{
+	int i = 0;
+	int j = 0;
+	for (i = 0; i < row; i++)
+	{
+		for (j = 0; j < lin; j++)
+		{
+			if (board[i][j] == ' ')
+				return 0;
+		}
+	}
+	return 1;
+}
+
+//判断胜负
+char charge(char board[row][lin])
+{
+	int i = 0;
+	int j = 0;
+	//行胜利
+	for (i = 0; i < row; i++)
+	{
+		if (board[i][0] != ' ' 
+			&& board[i][0] == board[i][1] 
+			&& board[i][0] == board[i][2])
+			return board[i][0];
+	}
+	//列胜利
+	for (i = 0; i < lin; i++)
+	{
+		if (board[0][i] != ' ' 
+			&& board[0][i] == board[1][i] 
+			&& board[0][i] == board[2][i])
+			return board[0][i];
+	}
+	//对角线胜利
+	if (board[0][0] != ' '
+		&&board[0][0] == board[1][1] 
+		&& board[0][0] == board[2][2])
+	{
+		return board[0][0];
+	}
+	if (board[0][2] != ' ' 
+		&& board[0][2] == board[1][1] 
+		&& board[0][2] == board[2][0])
+	{
+		return board[0][2];
+    }
+	//和棋
+	j = board_full(board);
+	if (j == 1)
+	{
+		return 'q';
+	}
+	return ' ';
+}
