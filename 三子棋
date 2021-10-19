@@ -1,0 +1,22 @@
+.h文件
+
+game.h
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <Windows.h>
+#include <time.h>
+
+#define row 3
+#define lin 3
+
+void init_board(char board[row][lin]);//初始化棋盘
+void display_board(char board[row][lin]);//打印棋盘
+void player_input(char board[row][lin]);//玩家下棋
+void rot_input(char board[row][lin]);//电脑下棋
+int board_full(char board[row][lin]);//棋盘是否下满
+char charge(char board[row][lin]);//胜利条件
+
+.c++文件
+
+game.c++
