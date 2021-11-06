@@ -1,0 +1,68 @@
+# C-study
+C语言学习时留下的代码
+
+//操作符详解
+
+////  整型提升
+//int main()
+//{
+//	char c = 1;
+//	printf("%u\n", sizeof(c));//  1
+//	printf("%u\n", sizeof(+c));//  4
+//	printf("%u\n", sizeof(!c));//  1
+//	//char a = 3;
+//	//char b = 127;
+//	//char c = a + b;
+//	//printf("%d\n", c);
+//	return 0;
+//}
+
+////  类型创建
+//struct Stu
+//{
+//	char name[20];
+//	int age;
+//	char id[20];
+//};
+//int main()
+//{
+//	struct Stu s1 = { "张三",20,"1905200030" };
+//	struct Stu* ps = &s1;
+//	//  结构体指针 -> 变量名
+//	printf("%s\n", ps->name);
+//	printf("%d\n", ps->age);
+//	printf("%s\n", ps->id);
+//	return 0;
+//}
+
+
+//统计一个整数存储在内存中的二进制中1的个数
+//int main()
+//{
+//
+//}
+
+
+
+////加减法 - 交换数值 - 可能会溢出
+//int main()
+//{
+//	int a = 5;
+//	int b = 3;
+//	printf("a = %d , b = %d \n", a, b);
+//
+//	//加减法
+//	//a = a + b;
+//	//b = a - b;
+//	//a = a - b;
+//	//printf("a = %d , b = %d \n", a, b);
+//	
+//
+//	//异或法
+//	a = a ^ b;
+//	b = a ^ b;
+//	a = a ^ b;
+//	printf("a = %d , b = %d \n", a, b);
+//
+//	return 0;
+//}
