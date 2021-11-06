@@ -1,0 +1,238 @@
+# C-study
+C语言学习时留下的代码
+//  头文件
+#pragma once
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define ROWS 11
+#define COLS 11
+#define ROW ROWS-2
+#define COL COLS-2
+#define easy_level 10
+
+void Init_board(char board[ROWS][COLS], int rows, int cols, char set);//初始化棋盘
+void Display_board(char board[ROWS][COLS], int rows, int cols);//打印棋盘
+void Arrange_board(char board[ROWS][COLS], int rows, int cols);//布雷
+void Guess_board(char mine[ROWS][COLS], char show[ROWS][COLS], int row, int col);//猜雷
+
+//  函数文件
+#define _CRT_SECURE_NO_WARNINGS 1
+#include "game.h"
+
+//初始化棋盘
+void Init_board(char board[ROWS][COLS], int rows, int cols, char set)
+{
+	int i = 0;
+	int j = 0;
+	for (i = 0; i < rows; i++)
+	{
+		for (j = 0; j < cols; j++)
+		{
+			board[i][j] = set;
+		}
+	}
+}
+
+//打印棋盘
+void Display_board(char board[ROWS][COLS], int row, int col)
+{
+	int i = 0;
+	int j = 0;
+	int count = 0;
+	for (count = 0; count <= row; count++)//打印行数
+	{
+		printf("%d ", count);
+	}
+	printf("\n");
+	for (i = 1; i <= row; i++)
+	{
+		printf("%d ", i);  //打印列数
+		for (j = 1; j <= col; j++)
+		{
+			printf("%c ", board[i][j]);
+		}
+		printf("\n");
+	}
+}
+
+//布雷
+void Arrange_board(char board[ROWS][COLS], int rows, int cols)
+{
+	int i = 0;
+	int x = 0;
+	int y = 0;
+	for (i = 0; i < easy_level; i++)
+	{
+		while (1)
+		{
+			x = rand() % 9 + 1;
+			y = rand() % 9 + 1;
+			if (board[x][y] == '0')
+			{
+				board[x][y] = '1';
+				break;
+			}
+		}
+	}
+	Display_board(board, ROW, COL);//测试布雷
+}
+
+int play_count(char mine[ROWS][COLS], int x, int y)
+{
+	int count = 0;
+	count = mine[x - 1][y] +
+		mine[x - 1][y - 1] +
+		mine[x][y - 1] +
+		mine[x + 1][y - 1] +
+		mine[x + 1][y] +
+		mine[x + 1][y + 1] +
+		mine[x][y + 1] +
+		mine[x - 1][y + 1] - 8 * '0';
+	return count;
+}
+
+//递归，迅速展开非雷区
+int play_count2(char mine[ROWS][COLS], char show[ROWS][COLS], int x, int y)
+{
+	if (1 <= x && x <= 9 && 1 <= y && y <= 9 && show[x][y] == '*')
+		;
+	else
+		return 0;
+	int count = 0;
+	count = mine[x - 1][y] +
+		mine[x - 1][y - 1] +
+		mine[x][y - 1] +
+		mine[x + 1][y - 1] +
+		mine[x + 1][y] +
+		mine[x + 1][y + 1] +
+		mine[x][y + 1] +
+		mine[x - 1][y + 1] - 8 * '0';
+	if (count == 0)
+	{
+		show[x][y] = '0';//做标记，防止重复计算
+		play_count2(mine, show, x - 1, y);
+		play_count2(mine, show, x - 1, y - 1);
+		play_count2(mine, show, x, y - 1);
+		play_count2(mine, show, x + 1, y - 1);
+		play_count2(mine, show, x + 1, y);
+		play_count2(mine, show, x + 1, y + 1);
+		play_count2(mine, show, x, y + 1);
+		play_count2(mine, show, x - 1, y + 1);
+	}
+	else
+	{
+		show[x][y] = count + '0';
+	}
+	return 0;
+}
+
+//猜雷
+void Guess_board(char mine[ROWS][COLS], char show[ROWS][COLS], int row, int col)
+{
+	int x = 0;
+	int y = 0;
+	int count = 0;
+	int win = 0;
+	while (1)
+	{
+		while (1)
+		{
+			printf("坐标格式为1 1，中间为一个空格\n请输入:>");
+			scanf("%d %d", &x, &y);
+			if (show[x][y] != '*' || 9 < x || x < 1 || 9 < y || y < 1)
+			{
+				printf("请输入正确的坐标值\n");
+			}
+			else
+				break;
+		}
+		if (mine[x][y] == '1')
+		{
+			printf("\n\n你踩雷了，你被炸死了，游戏失败\n\n\n");
+			Display_board(mine, ROW, COL);
+			break;
+		}
+		else
+		{
+			play_count2(mine, show, x, y);//递归，迅速展开
+			//count = play_count(mine, x, y);//打印周围八格的雷数
+			//printf("\n%d\n", count);//测试用
+			//show[x][y] = count + '0';
+			system("cls");
+			Display_board(show, ROW, COL);
+			win++;
+		}
+		if (win == row * col - easy_level)
+		{
+			printf("\n排雷成功，游戏胜利\n\n");
+			break;
+		}
+	}
+}
+
+
+//  Main  文件
+#define _CRT_SECURE_NO_WARNINGS 1
+#include "game.h"
+
+void menu()
+{
+	printf("**************************************************\n");
+	printf("********************  1.play  ********************\n");
+	printf("********************  2.exit  ********************\n");
+	printf("**************************************************\n");
+
+}
+
+void game()
+{
+	char mine[ROWS][COLS];
+	char show[ROWS][COLS];
+	Init_board(mine, ROWS, COLS, '0');//初始化里层  
+	Init_board(show, ROWS, COLS, '*');//初始化外层
+	//Display_board(mine, ROW, COL);//打印里层  测试用
+	Display_board(show, ROW, COL);//打印外层
+	Arrange_board(mine, ROWS, COLS);//布雷
+	Guess_board(mine, show, ROW, COL);//猜雷
+
+}
+
+int main()
+{
+	srand((unsigned int)time(NULL));
+	int input = 0;
+	do {
+		menu();
+		printf("请输入:>");
+	repet:
+		scanf("%d", &input);
+		switch (input)
+		{
+		case 1:
+			game();
+			break;
+		case 2:
+			printf("退出游戏\n");
+			break;
+		default:
+			printf("输入错误\n请重新输入:>");
+			goto repet;
+			break;
+		}
+		if (input != 1)
+			break;
+	} while (input);
+	return 0;
+}
+
+//int main()
+//{
+//	char i = '1';
+//	char k = '2';
+//	int j = 0;
+//	j = i + k - 1 * '0';
+//	printf("%d", j);
+//	return 0;
+//}
